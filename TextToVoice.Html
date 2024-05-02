@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         *{
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        #voiceBlock{
+            width: 100%;
+            height: 100vh;
+        }
+        #voiceBlock > article{
+            width:80%;
+            height: inherit;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        h1{
+            font-size: 64px;
+            color: teal;
+            text-decoration: underline;
+            margin-bottom: 20px;
+        }
+        textarea{
+            width: 400px;
+            height: 300px;
+            padding: 20px;
+            font-size: 44px;
+            margin-bottom: 25px;
+        }
+        button{
+            padding: 20px 100px;
+            border: none;
+            background-color: teal;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <section id="voiceBlock">
+        <article>
+            <h1>Text To Voice Converter</h1>
+            <textarea name=""   id="textAreaValue" placeholder="Write something to listen..." cols="30" rows="10"></textarea>
+        <button id="btn">Listen</button>
+        </article>
+    </section>
+
+    <script>
+        let speech = new SpeechSynthesisUtterance();
+        let btn=document.getElementById("btn");
+        let textArea=document.getElementById("textAreaValue");
+        btn.addEventListener("click",()=>{
+            speech.text= textArea.value;
+            // console.log(speech);
+        //   console.log(window.speechSynthesis)
+        window.speechSynthesis.speak(speech);
+        })
+    </script>
+</body>
+</html>
